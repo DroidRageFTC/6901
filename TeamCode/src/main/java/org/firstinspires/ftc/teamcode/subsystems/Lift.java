@@ -50,20 +50,10 @@ public class Lift extends SubsystemBase {
 
     public Lift(MotorEx liftMotor, MotorEx liftMotor2, Telemetry tl, HardwareMap hw) {
         this.liftMotor = liftMotor;
-//        this.liftMotor2 = liftMotor2;
-
         this.liftMotor = new MotorEx(hw, "slide");
-//        this.liftMotor2 = new MotorEx(hw, "lift2");
-
-//        //Reverse lift motor
-//        this.liftMotor.setInverted(true);
-        //this.liftMotor2.setInverted(true);
 
         this.liftMotor.resetEncoder();
-//        this.liftMotor2.resetEncoder();
-
         this.liftMotor.setDistancePerPulse(360 / CPR);
-//        this.liftMotor2.setDistancePerPulse(360 / CPR);
 
         controller = new PIDFController(pidfCoefficients.p, pidfCoefficients.i, pidfCoefficients.d, pidfCoefficients.f, getAngle(), getAngle());
         controller.setTolerance(10);
@@ -88,7 +78,6 @@ public class Lift extends SubsystemBase {
             double output = controller.calculate(getAngle());
 
             liftMotor.set(output);
-            liftMotor2.set(output);
         }
 //        Util.logger(this, telemetry, Level.INFO, "lift encoder pos 1: ", liftMotor.getCurrentPosition());
 //        Util.logger(this, telemetry, Level.INFO, "lift encoder pos 2: ", liftMotor2.getCurrentPosition());

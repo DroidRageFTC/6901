@@ -22,7 +22,7 @@ public class CRedWarehouseCommand extends SequentialCommandGroup {
     public CRedWarehouseCommand(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos, CapServos capServos) {
         //declare variables here
         addCommands(
-                new CapArmWarehouseCommand(capServos, drivetrain),
+                new CapArmWarehouseCommand(armServos, drivetrain),
 
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-35), Math.toRadians(270)),

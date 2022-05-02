@@ -18,8 +18,7 @@ public class CapArmCarouselCommand extends SequentialCommandGroup {
 
         addCommands(
                 new InstantCommand(armServos::flipperOpen),
-                new WaitCommand(200),
-                new DriveForwardCommand(drivetrain, 8.5)
+                new WaitCommand(200)
         );
     }}
 

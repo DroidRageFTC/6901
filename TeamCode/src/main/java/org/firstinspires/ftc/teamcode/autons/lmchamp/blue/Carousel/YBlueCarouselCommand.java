@@ -20,19 +20,20 @@ public class YBlueCarouselCommand extends SequentialCommandGroup {
     public YBlueCarouselCommand(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos, Carousel carousel, CapServos capServos) {
 
         addCommands(
-                new DriveForwardCommand(drivetrain,10),
-                new TurnToCommand(drivetrain, 270),
+                new DriveForwardCommand(drivetrain,-2),
+                new TurnToCommand(drivetrain, 90),
                 new DriveForwardCommand(drivetrain, 16),
-                new TurnToCommand(drivetrain, 208),
+                new TurnToCommand(drivetrain, 25),
 
-                new DriveForwardCommand(drivetrain, 1),
+                new DriveForwardCommand(drivetrain, 3),
                 new KindaSlowDriveForwardCommand(drivetrain, 4),
                 new LeftCarouselCommand(carousel, drivetrain),
 
-                new TurnToCommand(drivetrain, 0, true),
-                new DriveForwardCommand(drivetrain, 30),
+                new DriveForwardCommand(drivetrain, -3),
+                new TurnToCommand(drivetrain, 180),
+                new DriveForwardCommand(drivetrain, 15),
 
-                new TurnToCommand(drivetrain, 100, true)
+                new TurnToCommand(drivetrain, 90)
                 );
     }
 }

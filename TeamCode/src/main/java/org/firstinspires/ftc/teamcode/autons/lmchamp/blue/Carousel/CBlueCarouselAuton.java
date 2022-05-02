@@ -87,48 +87,45 @@ public class CBlueCarouselAuton extends MatchOpMode {
                             new YBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
                             new InstantCommand(lift::liftLow),
                             new WaitCommand(150),
-                            new DriveForwardCommand(drivetrain, -23),
+                            new DriveForwardCommand(drivetrain, -28),
                             new CapArmCarouselCommand(armServos, drivetrain),
 
-                            new TurnToCommand(drivetrain, 270),
-                            new DriveForwardCommand(drivetrain, 16.5),
-                            new TurnToCommand(drivetrain, 180),
+                            new DriveForwardCommand(drivetrain, 18),
+                            new TurnToCommand(drivetrain, 0),
                             new DriveForwardCommand(drivetrain, 7.5),
 
-                            new TurnToCommand(drivetrain, 90),
-                            new DriveForwardCommand(drivetrain, -7))
+                            new TurnToCommand(drivetrain, 270, true),
+                            new DriveForwardCommand(drivetrain, -5))
                     );
                     put(TeamMarkerPipeline.Position.MIDDLE, new SequentialCommandGroup(
                             //Mid
                             new YBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
                             new InstantCommand(lift::liftMid),
                             new WaitCommand(150),
-                            new DriveForwardCommand(drivetrain, -23),
+                            new DriveForwardCommand(drivetrain, -28),
                             new CapArmCarouselCommand(armServos, drivetrain),
 
-                            new TurnToCommand(drivetrain, 270),
-                            new DriveForwardCommand(drivetrain, 16.5),
-                            new TurnToCommand(drivetrain, 180),
+                            new DriveForwardCommand(drivetrain, 18),
+                            new TurnToCommand(drivetrain, 0),
                             new DriveForwardCommand(drivetrain, 7.5),
 
-                            new TurnToCommand(drivetrain, 90),
-                            new DriveForwardCommand(drivetrain, -7))
+                            new TurnToCommand(drivetrain, 270, true),
+                            new DriveForwardCommand(drivetrain, -5))
                     );
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
                             //High
                             new YBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
                             new InstantCommand(lift::liftHigh),
                             new WaitCommand(150),
-                            new DriveForwardCommand(drivetrain, -23),
+                            new DriveForwardCommand(drivetrain, -28),
                             new CapArmCarouselCommand(armServos, drivetrain),
 
-                            new TurnToCommand(drivetrain, 270),
-                            new DriveForwardCommand(drivetrain, 16.5),
-                            new TurnToCommand(drivetrain, 180),
+                            new DriveForwardCommand(drivetrain, 18),
+                            new TurnToCommand(drivetrain, 0),
                             new DriveForwardCommand(drivetrain, 7.5),
 
-                            new TurnToCommand(drivetrain, 90),
-                            new DriveForwardCommand(drivetrain, -7))
+                            new TurnToCommand(drivetrain, 270, true),
+                            new DriveForwardCommand(drivetrain, -5))
                     );
                 }}, vision::getCurrentPosition)
         );

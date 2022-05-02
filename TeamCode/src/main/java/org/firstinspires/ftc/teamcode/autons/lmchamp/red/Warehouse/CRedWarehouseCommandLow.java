@@ -22,7 +22,7 @@ public class CRedWarehouseCommandLow extends SequentialCommandGroup {
     public CRedWarehouseCommandLow(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos,  CapServos capServos) {
         //NOT USED
         addCommands(
-                new CapArmWarehouseCommand(capServos, drivetrain),
+                new CapArmWarehouseCommand(armServos, drivetrain),
 
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-37), Math.toRadians(278)),
