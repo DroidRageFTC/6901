@@ -85,7 +85,7 @@ public class CRedCarouselAuton extends MatchOpMode {
                             new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
 //                            new InstantCommand(capServos::autoLow),
                             new DriveForwardCommand(drivetrain, 25),
-                            new CapArmCarouselCommand(capServos, drivetrain),
+                            new CapArmCarouselCommand(armServos, drivetrain),
 
                             new TurnToCommand(drivetrain, 90),
                             new DriveForwardCommand(drivetrain, 15),
@@ -100,7 +100,7 @@ public class CRedCarouselAuton extends MatchOpMode {
                             new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
 //                            new InstantCommand(capServos::autoMid),
                             new DriveForwardCommand(drivetrain, 25),
-                            new CapArmCarouselCommand(capServos, drivetrain),
+                            new CapArmCarouselCommand(armServos, drivetrain),
 
                             new TurnToCommand(drivetrain, 90),
                             new DriveForwardCommand(drivetrain, 15),
@@ -115,7 +115,7 @@ public class CRedCarouselAuton extends MatchOpMode {
                             new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
 //                            new InstantCommand(capServos::autoHigh),
                             new DriveForwardCommand(drivetrain, 25),
-                            new CapArmCarouselCommand(capServos, drivetrain),
+                            new CapArmCarouselCommand(armServos, drivetrain),
 
                             new TurnToCommand(drivetrain, 90),
                             new DriveForwardCommand(drivetrain, 15),

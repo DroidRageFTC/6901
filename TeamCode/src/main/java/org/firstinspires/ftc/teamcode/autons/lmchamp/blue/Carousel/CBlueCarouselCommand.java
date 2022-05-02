@@ -22,7 +22,7 @@ public class CBlueCarouselCommand extends SequentialCommandGroup {
                 new TurnToCommand(drivetrain, 63, true),
 
                 new DriveForwardCommand(drivetrain, 9.3),
-                new CapArmCarouselCommand(capServos, drivetrain),
+                new CapArmCarouselCommand(armServos, drivetrain),
 
                 new TurnToCommand(drivetrain, 270),
                 new DriveForwardCommand(drivetrain, 26.8),
@@ -37,20 +37,3 @@ public class CBlueCarouselCommand extends SequentialCommandGroup {
         );
     }
 }
-/*new DriveForwardCommand(drivetrain, 21),
-                new TurnToCommand(drivetrain, 60, true),
-
-                new DriveForwardCommand(drivetrain, 10.5),
-                new CapArmAutoCommand(capServos, drivetrain),
-
-                new TurnToCommand(drivetrain, 225),
-                new DriveForwardCommand(drivetrain, 27),
-                new KindaSlowDriveForwardCommand(drivetrain, 5),
-                new LeftCarouselCommand(carousel, drivetrain),
-
-                new DriveForwardCommand(drivetrain, -10),
-                new TurnToCommand(drivetrain, 180),
-                new DriveForwardCommand(drivetrain,-17.5),
-
-                new TurnToCommand(drivetrain, 90),
-                new DriveForwardCommand(drivetrain,-14)*/

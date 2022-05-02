@@ -13,8 +13,8 @@ public class SharedDropFreightCommand extends SequentialCommandGroup {
     public SharedDropFreightCommand(ArmServos armServos, Drivetrain drivetrain){
         addRequirements(armServos, drivetrain);
         addCommands(
-                new InstantCommand(armServos::armShared),
-                new InstantCommand(armServos::boxPush),
+                new InstantCommand(armServos::armLow),
+//                new InstantCommand(armServos::boxPush),
                 new DriveForwardCommand(drivetrain, 4)
         );
     }
