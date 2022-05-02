@@ -2,10 +2,8 @@ package org.firstinspires.ftc.teamcode.autons.lmchamp.red.Carousel;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.arcrobotics.ftclib.command.Command;
-import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.SelectCommand;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
-import com.arcrobotics.ftclib.command.WaitCommand;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.motors.CRServo;
@@ -26,7 +24,6 @@ import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 import org.firstinspires.ftc.teamcode.subsystems.Vision;
 
 import java.util.HashMap;
@@ -57,7 +54,6 @@ public class CRedCarouselAuton extends MatchOpMode {
     private Vision vision;
     private ArmServos armServos;
     private Carousel carousel;
-    private SensorColor sensorColor;
     private CapServos capServos;
 
     @Override
@@ -70,7 +66,6 @@ public class CRedCarouselAuton extends MatchOpMode {
         carousel = new Carousel(hardwareMap, telemetry);
         capServos = new CapServos(clawServo, capArmServo, telemetry, hardwareMap);
 
-        sensorColor = new SensorColor(hardwareMap, telemetry, "colorSensor");
         vision = new Vision(hardwareMap, "Webcam 1", telemetry);
         drivetrain.setPoseEstimate(new Pose2d(startPoseX, startPoseY, Math.toRadians(startPoseHeading)));
     }
@@ -87,8 +82,8 @@ public class CRedCarouselAuton extends MatchOpMode {
                 new SelectCommand(new HashMap<Object, Command>() {{
                     put(TeamMarkerPipeline.Position.LEFT, new SequentialCommandGroup(
                             //Low
-                            new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, sensorColor, capServos),
-                            new InstantCommand(capServos::autoLow),
+                            new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
+//                            new InstantCommand(capServos::autoLow),
                             new DriveForwardCommand(drivetrain, 25),
                             new CapArmCarouselCommand(capServos, drivetrain),
 
@@ -102,8 +97,8 @@ public class CRedCarouselAuton extends MatchOpMode {
                     );
                     put(TeamMarkerPipeline.Position.MIDDLE, new SequentialCommandGroup(
                             //Mid
-                            new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, sensorColor, capServos),
-                            new InstantCommand(capServos::autoMid),
+                            new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
+//                            new InstantCommand(capServos::autoMid),
                             new DriveForwardCommand(drivetrain, 25),
                             new CapArmCarouselCommand(capServos, drivetrain),
 
@@ -117,8 +112,8 @@ public class CRedCarouselAuton extends MatchOpMode {
                     );
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
                             //High
-                            new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, sensorColor, capServos),
-                            new InstantCommand(capServos::autoHigh),
+                            new YRedCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos),
+//                            new InstantCommand(capServos::autoHigh),
                             new DriveForwardCommand(drivetrain, 25),
                             new CapArmCarouselCommand(capServos, drivetrain),
 

@@ -16,10 +16,10 @@ public class CapArmLowCommand extends SequentialCommandGroup {
     public CapArmLowCommand(CapServos capServos, Drivetrain drivetrain) {
 
         addCommands(
-                new InstantCommand(capServos::clawOpen, capServos),
+//                new InstantCommand(capServos::clawOpen, capServos),
                 new WaitCommand(200),
                 new DriveForwardCommand(drivetrain, -10.5),
-                new TurnToCommand(drivetrain,180),
-                new InstantCommand(capServos::capReset, capServos)
+                new TurnToCommand(drivetrain,180)
+//                new InstantCommand(capServos::capReset, capServos)
         );
     }}

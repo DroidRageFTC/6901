@@ -18,7 +18,7 @@ import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
+
 @Disabled
 @Autonomous(name = "WindsorParkPRACTICE", group = "RED/BLUE")
 public class WindsorParkPractice extends MatchOpMode {
@@ -43,7 +43,6 @@ private Lift lift;
 private ArmServos armServos;
 private Carousel carousel;
 private CapServos capServos;
-private SensorColor sensorColor;
 
 @Override
 public void robotInit() {
@@ -55,7 +54,6 @@ public void robotInit() {
     carousel = new Carousel(hardwareMap, telemetry);
     capServos = new CapServos(clawServo, capArmServo, telemetry, hardwareMap);
     liftMotor = new MotorEx(hardwareMap, "lift");
-    sensorColor = new SensorColor(hardwareMap, telemetry, "colorSensor");
 }
 
 @Override

@@ -22,12 +22,10 @@ import org.firstinspires.ftc.teamcode.driveTrain.MatchOpMode;
 import org.firstinspires.ftc.teamcode.driveTrain.SampleTankDrive;
 
 import org.firstinspires.ftc.teamcode.subsystems.ArmServos;
-import org.firstinspires.ftc.teamcode.subsystems.CapServos;
 import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 
 @Config
 @TeleOp(name = "Blue TeleOp")
@@ -43,7 +41,6 @@ public class BlueTeleOp extends MatchOpMode {
         private ServoEx armServo, dropServo;
         private ServoEx intakeServo;
         private ColorSensor colorSensor;
-        private ServoEx capArmServo, clawServo;
 
     // Subsystems
         private Drivetrain drivetrain;
@@ -51,8 +48,6 @@ public class BlueTeleOp extends MatchOpMode {
         private Intake intake;
         private ArmServos armServos;
         private Carousel carousel;
-        private SensorColor sensorColor;
-        private CapServos capServos;
 
     //Buttons
         private Button intakeTrigger, outtakeTrigger;
@@ -81,13 +76,10 @@ public class BlueTeleOp extends MatchOpMode {
             lift = new Lift(liftMotor, liftMotor2, telemetry, hardwareMap);
             armServos = new ArmServos(armServo, dropServo, telemetry, hardwareMap);
             carousel = new Carousel(hardwareMap, telemetry);
-            capServos = new CapServos(clawServo, capArmServo, telemetry, hardwareMap);
 
             //gamepad1.setJoystickDeadzone(0.0f);
             drivetrain.setDefaultCommand(new DefaultDriveCommand(drivetrain, driverGamepad));
 
-            sensorColor = new SensorColor(hardwareMap, telemetry, "colorSensor");
-            intake.setDefaultCommand(new ColorIntakeCommand(intake, sensorColor, armServos));
     }
 
     @Override
@@ -128,8 +120,6 @@ public class BlueTeleOp extends MatchOpMode {
                     .whenPressed(new LiftResetCommandT(armServos, lift));
             resetEveryThingButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_DOWN))
                     .whenPressed(new InstantCommand(lift::liftResting, lift));
-            resetEveryThingButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_DOWN))
-                    .whenPressed(new InstantCommand(capServos::clawOpen));
 
         //Lift positions
             liftLowButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.X)
@@ -176,6 +166,6 @@ public class BlueTeleOp extends MatchOpMode {
     public void matchStart() { }
     @Override
     public void robotPeriodic() {
-        sensorColor.periodic();
+        
     }
 }

@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.autons.lmchamp.blue.Carousel;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.arcrobotics.ftclib.command.Command;
-import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.SelectCommand;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.arcrobotics.ftclib.command.WaitCommand;
@@ -23,7 +22,6 @@ import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 import org.firstinspires.ftc.teamcode.subsystems.Vision;
 
 import java.util.HashMap;
@@ -54,7 +52,6 @@ public class CBlueCarouselAuton extends MatchOpMode {
     private Vision vision;
     private ArmServos armServos;
     private Carousel carousel;
-    private SensorColor sensorColor;
     private CapServos capServos;
 
 
@@ -68,7 +65,6 @@ public class CBlueCarouselAuton extends MatchOpMode {
         carousel = new Carousel(hardwareMap, telemetry);
         capServos = new CapServos(clawServo, capArmServo, telemetry, hardwareMap);
 
-        sensorColor = new SensorColor(hardwareMap, telemetry, "colorSensor");
         vision = new Vision(hardwareMap, "Webcam 1", telemetry);
         drivetrain.setPoseEstimate(new Pose2d(startPoseX, startPoseY, Math.toRadians(startPoseHeading)));
     }
@@ -86,20 +82,20 @@ public class CBlueCarouselAuton extends MatchOpMode {
                     put(TeamMarkerPipeline.Position.LEFT, new SequentialCommandGroup(
                             //Low
                             new WaitCommand(1000),
-                            new InstantCommand(capServos::autoLow),
-                            new CBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, sensorColor, capServos))
+//                            new InstantCommand(capServos::autoLow),
+                            new CBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel,  capServos))
                     );
                     put(TeamMarkerPipeline.Position.MIDDLE, new SequentialCommandGroup(
                             //Mid
                             new WaitCommand(1000),
-                            new InstantCommand(capServos::autoMid),
-                            new CBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, sensorColor, capServos))
+//                            new InstantCommand(capServos::autoMid),
+                            new CBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos))
                     );
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
                             //High
                             new WaitCommand(1000),
-                            new InstantCommand(capServos::autoHigh),
-                            new CBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, sensorColor, capServos))
+//                            new InstantCommand(capServos::autoHigh),
+                            new CBlueCarouselCommand(drivetrain, intake, lift, armServos, carousel, capServos))
                     );
                 }}, vision::getCurrentPosition)
         );

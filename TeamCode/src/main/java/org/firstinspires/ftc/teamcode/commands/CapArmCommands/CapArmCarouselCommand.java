@@ -16,11 +16,11 @@ public class CapArmCarouselCommand extends SequentialCommandGroup {
     public CapArmCarouselCommand(CapServos capServos, Drivetrain drivetrain) {
 
         addCommands(
-                new InstantCommand(capServos::clawOpen, capServos),
+//                new InstantCommand(capServos::clawOpen, capServos),
                 new WaitCommand(200),
                 new DriveForwardCommand(drivetrain, -8.5),
-                new TurnToCommand(drivetrain,180, true),
-                new InstantCommand(capServos::capReset, capServos)
+                new TurnToCommand(drivetrain,180, true)
+//                new InstantCommand(capServos::capReset, capServos)
 
         );
     }}

@@ -4,7 +4,6 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 
-import org.firstinspires.ftc.teamcode.commands.CapArmCommands.CapArmLowCommand;
 import org.firstinspires.ftc.teamcode.commands.CapArmCommands.CapArmWarehouseCommand;
 import org.firstinspires.ftc.teamcode.commands.DriveCommands.TurnToCommand;
 import org.firstinspires.ftc.teamcode.commands.IntakeCommands.AutoIntakeCommand;
@@ -18,10 +17,9 @@ import org.firstinspires.ftc.teamcode.subsystems.CapServos;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 
 public class CRedWarehouseCommand extends SequentialCommandGroup {
-    public CRedWarehouseCommand(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos, SensorColor sensorColor, CapServos capServos) {
+    public CRedWarehouseCommand(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos, CapServos capServos) {
         //declare variables here
         addCommands(
                 new CapArmWarehouseCommand(capServos, drivetrain),
@@ -29,7 +27,7 @@ public class CRedWarehouseCommand extends SequentialCommandGroup {
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-35), Math.toRadians(270)),
 
-                new AutoIntakeCommand(lift, intake, armServos, drivetrain, sensorColor),
+                new AutoIntakeCommand(lift, intake, armServos, drivetrain),
                 new LiftHighCommand(lift, armServos),
                 new TurnToCommand(drivetrain, 275),
                 new SplineCommand(drivetrain, new Vector2d(18.5,16.2), Math.toRadians(6), true),
@@ -39,7 +37,7 @@ public class CRedWarehouseCommand extends SequentialCommandGroup {
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-42), Math.toRadians(270)),
 
-                new AutoIntakeCommand(lift, intake, armServos, drivetrain, sensorColor),
+                new AutoIntakeCommand(lift, intake, armServos, drivetrain),
                 new LiftHighCommand(lift, armServos),
                 new TurnToCommand(drivetrain, 275),
                 new SplineCommand(drivetrain, new Vector2d(17.1,15.3), Math.toRadians(360), true),
@@ -49,7 +47,7 @@ public class CRedWarehouseCommand extends SequentialCommandGroup {
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-47), Math.toRadians(270)),
 
-                new AutoIntakeCommand(lift, intake, armServos, drivetrain, sensorColor),
+                new AutoIntakeCommand(lift, intake, armServos, drivetrain),
                 new LiftHighCommand(lift, armServos),
                 new SplineCommand(drivetrain, new Vector2d(16.2,13.3), Math.toRadians(357), true),
                 new TurnCommand(drivetrain, -5),

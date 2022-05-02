@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 public class CapArmRestCommand extends SequentialCommandGroup {
     public CapArmRestCommand(CapServos capServos) {
         addCommands(
-                new InstantCommand(capServos::clawClose, capServos),
-                new InstantCommand(capServos::capReset, capServos)
+//                new InstantCommand(capServos::clawClose, capServos),
+//                new InstantCommand(capServos::capReset, capServos)
         );
     }}

@@ -31,8 +31,8 @@ public class ArmServos extends SubsystemBase {
     public static double SERVO_POSITION_BOX_CLOSE_BALL = 0.7;
     public static double SERVO_POSITION_BOX_CLOSE_CUBE = 0.8;
 
-    public static boolean boxCanMove;
-    public static boolean freightInBox;
+//    public static boolean boxCanMove;
+//    public static boolean freightInBox;
 
     private Telemetry telemetry;
     private TelemetryPacket packet;
@@ -65,29 +65,19 @@ public class ArmServos extends SubsystemBase {
         dropServo.setPosition(dropServoPosition);}
 
     public void armHome() {
-        boxCanMove = true;
-        freightInBox = false;
         setArmServo(SERVO_POSITION_ARM_HOME);
     }
     public void armUp() {
-        boxCanMove = false;
-        freightInBox = true;
         setArmServo(SERVO_POSITION_ARM_UP);
     }
     public void armDrop() {
-        boxCanMove = false;
-        freightInBox = false;
         setArmServo(SERVO_POSITION_ARM_DROP);
     }
     public void armHalfDrop() {
-        boxCanMove = false;
-        freightInBox = false;
         setArmServo(SERVO_POSITION_ARM_HALF_DROP);
     }
 
     public void armAutoDrop() {
-        boxCanMove = false;
-        freightInBox = false;
         setArmServo(SERVO_POSITION_ARM_AUTO_DROP);
     }
 

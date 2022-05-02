@@ -7,22 +7,19 @@ import com.arcrobotics.ftclib.command.WaitCommand;
 import com.arcrobotics.ftclib.command.WaitUntilCommand;
 
 import org.firstinspires.ftc.teamcode.commands.DriveCommands.DriveForwardCommand;
-import org.firstinspires.ftc.teamcode.commands.DriveCommands.TurnCommand;
 import org.firstinspires.ftc.teamcode.commands.DriveCommands.TurnToCommand;
-import org.firstinspires.ftc.teamcode.commands.IntakeCommands.IntakeCommand;
 import org.firstinspires.ftc.teamcode.subsystems.ArmServos;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 
 public class RedDuckIntakeCommand extends SequentialCommandGroup {
 
-    public RedDuckIntakeCommand(Lift lift, Intake intake, ArmServos armServos, Drivetrain drivetrain, SensorColor sensorColor) {
-        addRequirements(lift, intake, armServos, drivetrain, sensorColor);
+    public RedDuckIntakeCommand(Lift lift, Intake intake, ArmServos armServos, Drivetrain drivetrain) {
+        addRequirements(lift, intake, armServos, drivetrain);
         addCommands(
-                new WaitUntilCommand(sensorColor::freightInBox).withTimeout(700),
-                new ConditionalCommand(
+//                new WaitUntilCommand(sensorColor::freightInBox).withTimeout(700),
+
                         new SequentialCommandGroup(
                                 new InstantCommand(intake::autoIntake),
                                 new DriveForwardCommand(drivetrain, -8),
@@ -49,8 +46,7 @@ public class RedDuckIntakeCommand extends SequentialCommandGroup {
                                 new TurnToCommand(drivetrain, 270),
                                 new DriveForwardCommand(drivetrain,-9)
                         ),
-                        sensorColor::freightInBox
-                ),
+
                 new InstantCommand(armServos::boxClose)
 
         );

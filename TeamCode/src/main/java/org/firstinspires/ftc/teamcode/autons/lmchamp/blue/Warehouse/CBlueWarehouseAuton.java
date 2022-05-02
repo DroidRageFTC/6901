@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.autons.lmchamp.blue.Warehouse;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.arcrobotics.ftclib.command.Command;
-import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.SelectCommand;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
@@ -14,7 +13,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
 import org.firstinspires.ftc.teamcode.Util;
-import org.firstinspires.ftc.teamcode.commands.CapArmCommands.CapArmCarouselCommand;
 import org.firstinspires.ftc.teamcode.commands.DriveCommands.SplineCommand;
 import org.firstinspires.ftc.teamcode.driveTrain.MatchOpMode;
 import org.firstinspires.ftc.teamcode.driveTrain.SampleTankDrive;
@@ -24,7 +22,6 @@ import org.firstinspires.ftc.teamcode.subsystems.CapServos;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 import org.firstinspires.ftc.teamcode.subsystems.Vision;
 
 import java.util.HashMap;
@@ -55,8 +52,6 @@ public class CBlueWarehouseAuton extends MatchOpMode {
     private Lift lift;
     private Vision vision;
     private ArmServos armServos;
-    //private Carousel carousel;
-    private SensorColor sensorColor;
     private CapServos capServos;
 
 
@@ -71,7 +66,6 @@ public class CBlueWarehouseAuton extends MatchOpMode {
         //carousel = new Carousel(hardwareMap, telemetry);
         capServos = new CapServos(clawServo, capArmServo, telemetry, hardwareMap);
 
-        sensorColor = new SensorColor(hardwareMap, telemetry, "colorSensor");
         vision = new Vision(hardwareMap, "Webcam 1", telemetry);
         drivetrain.setPoseEstimate(new Pose2d(startPoseX, startPoseY, Math.toRadians(startPoseHeading)));
     }
@@ -88,21 +82,21 @@ public class CBlueWarehouseAuton extends MatchOpMode {
                 new SelectCommand(new HashMap<Object, Command>() {{
                     put(TeamMarkerPipeline.Position.LEFT, new SequentialCommandGroup(
                             //Low
-                            new InstantCommand(capServos::autoLow),
+//                            new InstantCommand(capServos::autoLow),
                             new SplineCommand(drivetrain, new Vector2d(24.7,   -20.5), Math.toRadians(0)),
-                            new CBlueWarehouseCommand(drivetrain, intake, lift, armServos, sensorColor, capServos))
+                            new CBlueWarehouseCommand(drivetrain, intake, lift, armServos,capServos))
                     );
                     put(TeamMarkerPipeline.Position.MIDDLE, new SequentialCommandGroup(
                             //Mid
-                            new InstantCommand(capServos::autoMid),
+//                            new InstantCommand(capServos::autoMid),
                             new SplineCommand(drivetrain, new Vector2d(23, -19), Math.toRadians(0)),
-                            new CBlueWarehouseCommand(drivetrain, intake, lift, armServos, sensorColor, capServos))
+                            new CBlueWarehouseCommand(drivetrain, intake, lift, armServos,  capServos))
                     );
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
                             //High
-                            new InstantCommand(capServos::autoHigh),
+//                            new InstantCommand(capServos::autoHigh),
                             new SplineCommand(drivetrain, new Vector2d(24,   -18.5), Math.toRadians(0)),
-                            new CBlueWarehouseCommand(drivetrain, intake, lift, armServos, sensorColor, capServos))
+                            new CBlueWarehouseCommand(drivetrain, intake, lift, armServos,  capServos))
                     );
                 }}, vision::getCurrentPosition)
         );

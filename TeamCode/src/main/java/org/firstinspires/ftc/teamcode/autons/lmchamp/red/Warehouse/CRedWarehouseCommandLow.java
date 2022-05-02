@@ -17,10 +17,9 @@ import org.firstinspires.ftc.teamcode.subsystems.CapServos;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 
 public class CRedWarehouseCommandLow extends SequentialCommandGroup {
-    public CRedWarehouseCommandLow(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos, SensorColor sensorColor, CapServos capServos) {
+    public CRedWarehouseCommandLow(Drivetrain drivetrain, Intake intake, Lift lift, ArmServos armServos,  CapServos capServos) {
         //NOT USED
         addCommands(
                 new CapArmWarehouseCommand(capServos, drivetrain),
@@ -28,7 +27,7 @@ public class CRedWarehouseCommandLow extends SequentialCommandGroup {
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-37), Math.toRadians(278)),
 
-                new AutoIntakeCommand(lift, intake, armServos, drivetrain, sensorColor),
+                new AutoIntakeCommand(lift, intake, armServos, drivetrain),
                 new LiftHighCommand(lift, armServos),
                 new TurnToCommand(drivetrain, 275),
                 new SplineCommand(drivetrain, new Vector2d(19.2,17), Math.toRadians(6), true),
@@ -38,7 +37,7 @@ public class CRedWarehouseCommandLow extends SequentialCommandGroup {
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-40), Math.toRadians(270)),
 
-                new AutoIntakeCommand(lift, intake, armServos, drivetrain, sensorColor),
+                new AutoIntakeCommand(lift, intake, armServos, drivetrain),
                 new LiftHighCommand(lift, armServos),
                 new TurnToCommand(drivetrain, 275),
                 new SplineCommand(drivetrain, new Vector2d(15.5,15.2), Math.toRadians(355), true),
@@ -48,7 +47,7 @@ public class CRedWarehouseCommandLow extends SequentialCommandGroup {
                 new InstantCommand(intake::autoIntake),
                 new SplineCommand(drivetrain, new Vector2d(-8,-48), Math.toRadians(270)),
 
-                new AutoIntakeCommand(lift, intake, armServos, drivetrain, sensorColor),
+                new AutoIntakeCommand(lift, intake, armServos, drivetrain),
                 new LiftHighCommand(lift, armServos),
                 new TurnToCommand(drivetrain, 275),
                 new SplineCommand(drivetrain, new Vector2d(13.5,13.7), Math.toRadians(357), true),

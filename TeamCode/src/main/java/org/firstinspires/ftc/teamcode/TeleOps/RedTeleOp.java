@@ -27,7 +27,6 @@ import org.firstinspires.ftc.teamcode.subsystems.Carousel;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
-import org.firstinspires.ftc.teamcode.subsystems.SensorColor;
 
 @Config
 @TeleOp(name = "Red TeleOp")
@@ -51,7 +50,6 @@ public class RedTeleOp extends MatchOpMode {
     private Intake intake;
     private ArmServos armServos;
     private Carousel carousel;
-    private SensorColor sensorColor;
     private CapServos capServos;
 
     //Buttons
@@ -86,8 +84,6 @@ public class RedTeleOp extends MatchOpMode {
         //gamepad1.setJoystickDeadzone(0.0f);
         drivetrain.setDefaultCommand(new DefaultDriveCommand(drivetrain, driverGamepad));
 
-        sensorColor = new SensorColor(hardwareMap, telemetry, "colorSensor");
-        intake.setDefaultCommand(new ColorIntakeCommand(intake, sensorColor, armServos));
     }
 
     @Override
@@ -128,8 +124,8 @@ public class RedTeleOp extends MatchOpMode {
                 .whenPressed(new LiftResetCommandT(armServos, lift));
         resetEveryThingButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_DOWN))
                 .whenPressed(new InstantCommand(lift::liftResting, lift));
-        resetEveryThingButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_DOWN))
-                .whenPressed(new InstantCommand(capServos::clawOpen));
+//        resetEveryThingButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_DOWN))
+//                .whenPressed(new InstantCommand(capServos::clawOpen));
 
         //Lift positions
         liftLowButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.X)
@@ -176,6 +172,5 @@ public class RedTeleOp extends MatchOpMode {
     public void matchStart() { }
     @Override
     public void robotPeriodic() {
-        sensorColor.periodic();
     }
 }
