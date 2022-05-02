@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.commands.IntakeCommands;
 
-import com.arcrobotics.ftclib.command.ConditionalCommand;
 import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.arcrobotics.ftclib.command.WaitCommand;
@@ -15,7 +14,7 @@ public class ColorIntakeCommand extends SequentialCommandGroup {
         addCommands(
 
                         new SequentialCommandGroup(
-                                new InstantCommand(armServos::armUp),
+                                new InstantCommand(armServos::armShared),
                                 new InstantCommand(armServos::boxClose),
                                 new InstantCommand(intake::stop),
                                 new WaitCommand(500),

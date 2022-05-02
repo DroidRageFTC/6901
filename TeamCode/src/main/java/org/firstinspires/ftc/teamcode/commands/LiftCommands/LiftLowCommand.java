@@ -11,8 +11,8 @@ public class LiftLowCommand extends SequentialCommandGroup {
     
     public LiftLowCommand(Lift lift, ArmServos armServos){
         addCommands(
-                new InstantCommand(lift::liftLow, lift),
-                new InstantCommand(armServos::armDrop ,armServos)
+                new InstantCommand(lift::liftLow, lift)
+//                new InstantCommand(armServos::armDrop ,armServos)
                 );
         
     }   

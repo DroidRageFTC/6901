@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.SimpleServo;
@@ -16,17 +15,18 @@ import java.util.logging.Level;
 @Config
 public class ArmServos extends SubsystemBase {
 
-    public static double SERVO_POSITION_ARM_HOME =0.19;
-    public static double SERVO_POSITION_ARM_UP = 0.3;
-    public static double SERVO_POSITION_ARM_AUTO_DROP = 0.6;
-    public static double SERVO_POSITION_ARM_HALF_DROP = 0.85;
-    public static double SERVO_POSITION_ARM_DROP = 0.9;
-    public static double SERVO_POSITION_ARM_SHARED = 1;
+    public static double SERVO_POSITION_ARM_HOME = -1;
 
-    public static double SERVO_POSITION_BOX_OPEN = 0.45;
-    public static double SERVO_POSITION_BOX_AUTO_PUSH = 0.1;
-    public static double SERVO_POSITION_BOX_PUSH = 0;
-    public static double SERVO_POSITION_BOX_CLOSE = 0.575;
+    public static double BOX_SHARED = 0.3;
+    public static double BOX_HIGH = 0.8;
+    public static double BOX_DOWN = -1;
+//    public static double SERVO_POSITION_ARM_DROP = 0.9;
+//    public static double SERVO_POSITION_ARM_SHARED = .9;
+//
+    public static double FLIPPER_OPEN = 0.87;
+//    public static double SERVO_POSITION_BOX_AUTO_PUSH = 0.1;
+//    public static double SERVO_POSITION_BOX_PUSH = 0;
+    public static double FLIPPER_CLOSE = 1;
 
     public static double SERVO_POSITION_BOX_CLOSE_BALL = 0.7;
     public static double SERVO_POSITION_BOX_CLOSE_CUBE = 0.8;
@@ -51,7 +51,7 @@ public class ArmServos extends SubsystemBase {
         this.packet = packet;
 
         this.armServo.setPosition(SERVO_POSITION_ARM_HOME);
-        this.dropServo.setPosition(SERVO_POSITION_BOX_OPEN);
+        this.dropServo.setPosition(FLIPPER_OPEN);
     }
     @Override
     public void periodic() {
@@ -67,31 +67,31 @@ public class ArmServos extends SubsystemBase {
     public void armHome() {
         setArmServo(SERVO_POSITION_ARM_HOME);
     }
-    public void armUp() {
-        setArmServo(SERVO_POSITION_ARM_UP);
+    public void armShared() {
+        setArmServo(BOX_SHARED);
     }
-    public void armDrop() {
-        setArmServo(SERVO_POSITION_ARM_DROP);
-    }
+//    public void armDrop() {
+//        setArmServo(SERVO_POSITION_ARM_DROP);
+//    }
     public void armHalfDrop() {
-        setArmServo(SERVO_POSITION_ARM_HALF_DROP);
+        setArmServo(BOX_DOWN);
     }
 
     public void armAutoDrop() {
-        setArmServo(SERVO_POSITION_ARM_AUTO_DROP);
+        setArmServo(BOX_HIGH);
     }
 
-    public void armShared() {
-        setArmServo(SERVO_POSITION_ARM_SHARED);
-    }
+//    public void armShared() {
+//        setArmServo(SERVO_POSITION_ARM_SHARED);
+//    }
 
-    public void boxOpen() { setDropServo(SERVO_POSITION_BOX_OPEN); }
-    public void boxClose() { setDropServo(SERVO_POSITION_BOX_CLOSE); }
-    public void boxPush() { setDropServo(SERVO_POSITION_BOX_PUSH); }
-    public void boxAutoPush() { setDropServo(SERVO_POSITION_BOX_AUTO_PUSH); }
+    public void boxOpen() { setDropServo(FLIPPER_OPEN); }
+    public void boxClose() { setDropServo(FLIPPER_CLOSE); }
+    public void boxPush() {  }
+    public void boxAutoPush() { }
 
-    public void boxBall() { setDropServo(SERVO_POSITION_BOX_CLOSE_BALL); }
-    public void boxCube() { setDropServo(SERVO_POSITION_BOX_CLOSE_CUBE); }
+//    public void boxBall() { setDropServo(SERVO_POSITION_BOX_CLOSE_BALL); }
+//    public void boxCube() { setDropServo(SERVO_POSITION_BOX_CLOSE_CUBE); }
 
     public void boxUp() { setDropServo(dropServo.getPosition()+0.1); }
     public void boxDown() { setDropServo(dropServo.getPosition()-0.1); }
@@ -100,6 +100,6 @@ public class ArmServos extends SubsystemBase {
     public void reset()
     {
         setArmServo(SERVO_POSITION_ARM_HOME);
-        setDropServo(SERVO_POSITION_BOX_OPEN);
+        setDropServo(FLIPPER_OPEN);
     }
 }

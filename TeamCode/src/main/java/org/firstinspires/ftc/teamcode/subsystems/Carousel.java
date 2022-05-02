@@ -17,8 +17,8 @@ import java.util.logging.Level;
 
 @Config
 public class Carousel extends SubsystemBase {
-    public static double CAROUSEL_LEFT_POWER = -1;
-    public static double CAROUSEL_RIGHT_POWER = 1;
+    public static double CAROUSEL_LEFT_POWER = -.35;
+    public static double CAROUSEL_RIGHT_POWER = .35;
 
     Telemetry telemetry;
     private MotorEx carouselM;

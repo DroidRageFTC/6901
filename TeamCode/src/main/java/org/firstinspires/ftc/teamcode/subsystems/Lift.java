@@ -25,18 +25,18 @@ public class Lift extends SubsystemBase {
     private boolean automatic;
 
     public static double CPR = 384.5;
-    public static double UP_SPEED = -0.25;
-    public static double DOWN_SPEED = 0.25;
+    public static double UP_SPEED = .8;
+    public static double DOWN_SPEED = -.8;
 
     private double encoderOffset = 0;
     private double encoderOffset2 = 0;
 
-    public static int RESTING_POSITION = 100;
-    public static int LOW_POSITION = -370;
-    public static int MID_POSITION = -650;
-    public static int SHARED_HIGH_POSITION = -1400;
-    public static int AUTO_HIGH_POSITION = -1600;
-    public static int HIGH_POSITION = -1650;
+    public static int RESTING_POSITION = 0;
+    public static int LOW_POSITION = -150;
+    public static int MID_POSITION = -300;
+    public static int SHARED_HIGH_POSITION = -300;
+    public static int AUTO_HIGH_POSITION = -400;
+    public static int HIGH_POSITION = -400;
 
     public static int CAP_POSITION = 0;
 
@@ -90,8 +90,8 @@ public class Lift extends SubsystemBase {
             liftMotor.set(output);
             liftMotor2.set(output);
         }
-        Util.logger(this, telemetry, Level.INFO, "lift encoder pos 1: ", liftMotor.getCurrentPosition());
-        Util.logger(this, telemetry, Level.INFO, "lift encoder pos 2: ", liftMotor2.getCurrentPosition());
+//        Util.logger(this, telemetry, Level.INFO, "lift encoder pos 1: ", liftMotor.getCurrentPosition());
+//        Util.logger(this, telemetry, Level.INFO, "lift encoder pos 2: ", liftMotor2.getCurrentPosition());
     }
 
     private double getEncoderDistance() {
@@ -103,13 +103,11 @@ public class Lift extends SubsystemBase {
     }
 
     public void liftManual() {
-        automatic = false;
         liftMotor.set(UP_SPEED);
         liftMotor2.set(UP_SPEED);
     }
 
     public void lowerLiftManual() {
-        automatic = false;
         liftMotor.set(DOWN_SPEED);
         liftMotor2.set(DOWN_SPEED);
     }
